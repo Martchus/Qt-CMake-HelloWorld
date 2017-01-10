@@ -9,6 +9,7 @@ option(STATIC_QT "Use static Qt5 libraries" ON)
 
 if(STATIC_QT)
     set(QT_PREFIX StaticQt5)
+    find_package(Qt5Core REQUIRED)
 else()
     set(QT_PREFIX Qt5)
 endif()
