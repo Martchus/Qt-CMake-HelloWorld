@@ -38,9 +38,6 @@ set(CMAKE_AUTORCC ON)
 #            "-DCMAKE_PREFIX_PATH=\"path/to/Qt5/lib/cmake\" or with set(CMAKE_PREFIX_PATH path/to/Qt5/lib/cmake)")
 #endif(NOT CMAKE_PREFIX_PATH AND NOT Qt5Widgets_DIR)
 
-# Add a compiler flag
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
-
 # Tell CMake to create the helloworld executable
 add_executable(helloworld main.cpp mainwindow.cpp mainwindow.ui resources.qrc)
 
