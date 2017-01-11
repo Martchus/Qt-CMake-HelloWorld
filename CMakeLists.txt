@@ -9,6 +9,7 @@ option(STATIC_QT "Use static Qt5 libraries" ON)
 
 if(STATIC_QT)
     set(QT_PREFIX StaticQt5)
+    set(LINKER_FLAGS -static -static-libstdc++ -static-libgcc)
     find_package(Qt5Core REQUIRED)
 else()
     set(QT_PREFIX Qt5)
@@ -44,4 +45,11 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 add_executable(helloworld main.cpp mainwindow.cpp mainwindow.ui resources.qrc)
 
 # Add the Qt5 Widgets for linking
-target_link_libraries(helloworld ${QT5_LIBS})
+target_link_libraries(helloworld ${LINKER_FLAGS} ${QT5_LIBS})
+
+if(STATIC_QT)
+set_target_properties(helloworld PROPERTIES
+    LINK_SEARCH_START_STATIC ON
+    LINK_SEARCH_END_STATIC ON
+)
+endif()
