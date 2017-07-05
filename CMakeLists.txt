@@ -8,11 +8,8 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 option(STATIC_QT "Use static Qt5 libraries" ON)
 
 if(STATIC_QT)
-    set(QT_PREFIX StaticQt5)
+    set(USE_STATIC_QT_BY_DEFAULT ON)
     set(LINKER_FLAGS -static -static-libstdc++ -static-libgcc)
-    find_package(Qt5Core REQUIRED)
-else()
-    set(QT_PREFIX Qt5)
 endif()
 
 set(QT5_PKGS Core Widgets Gui Network Sql)
@@ -20,8 +17,8 @@ set(QT5_PKGS Core Widgets Gui Network Sql)
 set(QT5_LIBS "")
 
 foreach(pkg ${QT5_PKGS})
-    find_package(${QT_PREFIX}${pkg} REQUIRED)
-    list(APPEND QT5_LIBS ${QT_PREFIX}::${pkg})
+    find_package(Qt5${pkg} REQUIRED)
+    list(APPEND QT5_LIBS Qt5::${pkg})
 endforeach()
 
 
