@@ -24,6 +24,8 @@ foreach(pkg ${QT5_PKGS})
     list(APPEND QT5_LIBS ${QT_PREFIX}::${pkg})
 endforeach()
 
+list(APPEND QT5_LIBS ${QT_PREFIX}::QWindowsIntegrationPlugin)
+list(APPEND QT5_LIBS ${QT_PREFIX}::QWindowsVistaStylePlugin)
 
 # Turn on automatic invocation of the MOC
 set(CMAKE_AUTOMOC ON)
